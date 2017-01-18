@@ -1,0 +1,77 @@
+#!/usr/bin/expect
+set timeout 1
+spawn /opt/eprints3/bin/epadmin create
+
+expect "Archive ID? "
+send "test\n"
+
+expect "Configure vital settings? \[yes\] ? "
+send "yes\n"
+
+expect "Hostname? "
+send "dev-eprints\n"
+
+expect "Webserver Port \[80\] ? "
+send "80\n"
+
+expect "Alias (enter # when done) \[#\] ? "
+send "#\n"
+
+expect "Path \[/\] ? "
+send "\n"
+
+expect "HTTPS Hostname \[\] ? "
+send "\n"
+
+expect "Administrator Email? "
+send "toto@localhost\n"
+
+expect "Archive Name \[Test Repository\] ? "
+send "Test Repository\n"
+
+expect "Write these core settings? \[yes\] ? "
+send "yes\n"
+
+expect "Configure database? \[yes\] ? "
+send "yes\n"
+
+expect "Database Name \[test\] ? "
+send "eprints\n"
+
+expect "MySQL Host \[localhost\] ? "
+send "db\n"
+
+expect "MySQL Port (# for no setting) \[#\] ? "
+send "3306\n"
+
+expect "MySQL Socket (# for no setting) \[#\] ? "
+send "#\n"
+
+expect "Database User \[test\] ? "
+send "eprints\n"
+
+expect "Database Password *"
+send "eprints\n"
+
+expect "Database Engine \[MyISAM\] ? "
+send "MyISAM\n"
+
+expect "Write these database settings? \[yes\] ? "
+send "yes\n"
+
+expect "Create database \"eprints\" \[yes\] ? "
+send "no\n"
+
+expect "Create an initial user? \[yes\] ? "
+send "no\n"
+
+expect "Do you want to build the static web pages? \[yes\] ? "
+send "no\n"
+
+expect "Do you want to import the LOC subjects? \[yes\] ? "
+send "no\n"
+
+expect "Do you want to update the apache config files? (you still need to add the 'Include' line) \[yes\] ? "
+send "yes\n"
+
+expect "Don't forget to register your repository*"

@@ -1,0 +1,23 @@
+#!/usr/bin/expect
+set timeout 2
+spawn /opt/eprints3/bin/epadmin create_user test
+
+expect "Enter a username \[admin\] ? "
+send "admin\n"
+
+expect {
+    "User with username 'admin' already exists." {
+        exit 0
+    }
+    "Select a user type*" {
+        send "admin\n"
+
+        expect "Enter Password? "
+        send "admin\n"
+
+        expect "Email? "
+        send "toto@localhost\n"
+
+        expect "Successfully created new user*"
+    }
+}

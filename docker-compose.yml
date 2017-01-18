@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: .
+    hostname: dev-eprints
+    environment:
+      - TERM=xterm
+      - TZ=Europe/Zurich
+    ports:
+      - "80:80"
+    links:
+      - db
+    volumes:
+      - ./data:/data
+    command: /usr/share/eprints3/scripts/start.sh
+
+  db:
+    image: mysql:5.5
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=eprints
+      - MYSQL_USER=eprints
+      - MYSQL_PASSWORD=eprints
+    ports:
+      - "23306:3306"

@@ -1,0 +1,21 @@
+#!/usr/bin/expect
+set timeout 2
+spawn /opt/eprints3/bin/epadmin create_db test
+
+expect "Database Superuser Username \[root\] ? "
+send "root\n"
+
+expect "Database Superuser Password? "
+send "1234\n"
+
+expect "Create database tables? \[yes\] ? "
+send "yes\n"
+
+expect {
+    "Done creating database tables." {
+        exit 0
+    }
+    "WARNING: Database is NOT empty*" {
+        exit 0
+    }
+}
